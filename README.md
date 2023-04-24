@@ -44,6 +44,4 @@ Both players use the same keyboard to play the game. The player on the left uses
 
 ## Conclusion
 
-We Fight! is a fun and exciting game that challenges players to use their strategic skills to win the game. The game is easy to understand and play, making it suitable for all ages. The game's source code is available for download, allowing players to customize the game to their liking.
-# We Fight! Game Project
 
