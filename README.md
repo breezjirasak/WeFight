@@ -43,5 +43,5 @@ The game is won by destroying the opponent's base. The game is lost when the pla
 Both players use the same keyboard to play the game. The player on the left uses the A, W, S, and D keys to move around, while the player on the right uses the arrow keys.
 
 ## Conclusion
-
+We Fight! is a fun and exciting game that challenges players to use their strategic skills to win the game. The game is easy to understand and play, making it suitable for all ages. The game's source code is available for download, allowing players to customize the game to their liking.
 
