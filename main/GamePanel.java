@@ -4,6 +4,8 @@ import java.awt.*;
 import javax.swing.JPanel;
 
 import frameworks.State;
+import objects.bases.GreenBase;
+import objects.bases.RedBase;
 import states.EndState;
 import states.MenuState;
 import states.PlayingState;
@@ -19,6 +21,9 @@ public class GamePanel extends JPanel {
     public PlayingState PLAYING = new PlayingState(this);
     public PausedState PAUSED = new PausedState(this);
     public EndState END = new EndState(this);
+
+    public GreenBase greenBase = new GreenBase();
+    public RedBase redBase = new RedBase();
 
     Thread gameThread;
 
@@ -50,6 +55,7 @@ public class GamePanel extends JPanel {
     }
 
     public void update() {
+        gameState.update();
 
     }
 

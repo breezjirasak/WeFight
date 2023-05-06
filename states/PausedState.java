@@ -19,9 +19,9 @@ public class PausedState implements State {
 
     @Override
     public void draw(Graphics g) {
-        // gp.PLAYING.draw(g);
+        gp.PLAYING.draw(g);
 
-        gp.setBackground(Color.pink);
+        // gp.setBackground(Color.pink);
 
         g.setFont(g.getFont().deriveFont(Font.BOLD, 96F));
         String text = "PAUSED";
@@ -43,6 +43,11 @@ public class PausedState implements State {
         if (code == KeyEvent.VK_ESCAPE) {
             gp.gameState = gp.PLAYING;
         }
+
+    }
+
+    @Override
+    public void update() {
 
     }
 

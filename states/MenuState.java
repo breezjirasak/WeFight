@@ -81,4 +81,9 @@ public class MenuState implements State {
 
     }
 
+    @Override
+    public void update() {
+
+    }
+
 }

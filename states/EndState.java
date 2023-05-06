@@ -27,5 +27,11 @@ public class EndState implements State{
         // TODO Auto-generated method stub
         
     }
+
+
+    @Override
+    public void update() {
+
+    }
     
 }
