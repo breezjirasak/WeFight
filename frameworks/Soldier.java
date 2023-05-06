@@ -13,6 +13,7 @@ public abstract class Soldier {
     public int positionX;
     public int positionY;
     public boolean move = true;
+    public boolean isHit = false;
 
     public BufferedImage walk1, walk2;
     public int spriteCounter = 0;
@@ -48,7 +49,7 @@ public abstract class Soldier {
         return damage;
     }
 
-    public abstract void update();
+    public abstract void update(Soldier soldier);
 
     public abstract void draw(Graphics g);
 }

@@ -14,7 +14,7 @@ public class GunSoldier extends Soldier {
     }
 
     @Override
-    public void update() {
+    public void update(Soldier soldier) {
 
         if (side == "green") {
             positionX -= 1;

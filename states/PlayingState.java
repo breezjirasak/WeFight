@@ -3,12 +3,10 @@ package states;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
-import java.awt.Font;
 
-import frameworks.Soldier;
 import frameworks.State;
 import main.GamePanel;
-import objects.bases.RedBase;
+
 
 public class PlayingState implements State {
 
@@ -23,13 +21,8 @@ public class PlayingState implements State {
 
         gp.setBackground(Color.white);
 
-        for (Soldier soldier : gp.redBase.soldiers) {
-            soldier.draw(g);
-        }
-
-        for (Soldier soldier : gp.greenBase.soldiers) {
-            soldier.draw(g);
-        }
+        gp.redBase.draw(g);
+        gp.greenBase.draw(g);
 
     }
 
@@ -49,17 +42,21 @@ public class PlayingState implements State {
         if (code == KeyEvent.VK_I) {
             gp.greenBase.createSwordSoldier(900, 450);
         }
+
+        if (code == KeyEvent.VK_Z) {
+            gp.redBase.soldiers.remove(0);
+        }
+
+        if (code == KeyEvent.VK_U) {
+            gp.greenBase.soldiers.remove(0);
+        }
+
     }
 
     @Override
     public void update() {
-        for (Soldier soldier : gp.redBase.soldiers) {
-            soldier.update();
-        }
-
-        for (Soldier soldier : gp.greenBase.soldiers) {
-            soldier.update();
-        }
+        gp.redBase.update(gp.greenBase.frontX, gp.greenBase.soldierFront);
+        gp.greenBase.update(gp.redBase.frontX, gp.redBase.soldierFront);
     }
 
 }

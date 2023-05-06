@@ -36,7 +36,7 @@ public abstract class Base {
         return level;
     }
 
-    public abstract void update();
+    public abstract void update(int enemyX, Soldier enemy);
 
     public abstract void draw(Graphics g);
 
