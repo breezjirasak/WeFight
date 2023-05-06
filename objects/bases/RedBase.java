@@ -1,11 +1,14 @@
 package objects.bases;
 
 import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 
 import frameworks.Base;
 import frameworks.Soldier;
+import main.GamePanel;
 import factory.RedSoldierFactory;
 
 public class RedBase extends Base {
@@ -14,21 +17,37 @@ public class RedBase extends Base {
 
     public Soldier soldierFront;
     public int frontX = 0;
+    private int countTime;
 
     public RedBase() {
         super();
     }
 
     public void createSwordSoldier(int x, int y) {
+        if (getMoney() >= 2) {
         soldiers.add(factory.CreateNewSolider("Sword", x, y));
+        setMoney(-2);
+        }
     }
 
     public void createGunSoldier(int x, int y) {
+        if (getMoney() >= 4) {
         soldiers.add(factory.CreateNewSolider("Gun", x, y));
+        setMoney(-2);
+        }
     }
 
     @Override
     public void update(int enemyX, Soldier enemy) {
+
+        countTime++;
+        if (countTime >= GamePanel.FPS) {
+            setMoney(getLevel());
+
+            countTime = 0;
+
+            System.out.println(getMoney());
+        }
 
         if (!soldiers.isEmpty()) {
             soldierFront = soldiers.get(0);
@@ -54,6 +73,15 @@ public class RedBase extends Base {
 
     @Override
     public void draw(Graphics g) {
+        g.setFont(g.getFont().deriveFont(Font.BOLD, 96F));
+        String text = "$ " + String.valueOf(getMoney());
+        int x = 100;
+        int y = 200;
+
+        g.setColor(Color.black);
+        g.drawString(text, x, y);
+
+
         for (Soldier soldier : soldiers) {
             soldier.draw(g);
         }

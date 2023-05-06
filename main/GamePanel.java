@@ -14,7 +14,7 @@ import states.PausedState;
 public class GamePanel extends JPanel {
     public int WIDTH = 1200;
     public int HEIGHT = 600;
-    private int FPS = 60;
+    public static int FPS = 60;
 
     public State gameState;
     public MenuState MENU = new MenuState(this);
