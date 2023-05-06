@@ -1,5 +1,6 @@
 package objects.soldiers;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -43,7 +44,10 @@ public class SwordSoldier extends Soldier {
             image = walk2;
         }
 
+
         g.drawImage(image, positionX, positionY, 120, 120, null);
+        g.setColor(new Color(255,0,30));
+        g.fillRect(positionX + 33, positionY + 10, 50, 5);
 
     }
 
