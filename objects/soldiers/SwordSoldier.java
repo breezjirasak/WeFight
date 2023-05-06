@@ -44,10 +44,16 @@ public class SwordSoldier extends Soldier {
             image = walk2;
         }
 
+        double oneScale = (double) 50 / 100;
+        double hpBarValue = oneScale * getHp();
 
         g.drawImage(image, positionX, positionY, 120, 120, null);
-        g.setColor(new Color(255,0,30));
-        g.fillRect(positionX + 33, positionY + 10, 50, 5);
+
+        g.setColor(new Color(35, 35, 35));
+        g.fillRect(positionX + 32, positionY + 9, 52, 7);
+
+        g.setColor(new Color(255, 0, 30));
+        g.fillRect(positionX + 33, positionY + 10, (int) hpBarValue, 5);
 
     }
 

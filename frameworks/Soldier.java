@@ -12,6 +12,7 @@ public abstract class Soldier {
     public String side;
     public int positionX;
     public int positionY;
+    public boolean move = true;
 
     public BufferedImage walk1, walk2;
     public int spriteCounter = 0;

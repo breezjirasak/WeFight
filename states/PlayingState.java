@@ -21,6 +21,8 @@ public class PlayingState implements State {
     @Override
     public void draw(Graphics g) {
 
+        gp.setBackground(Color.white);
+
         for (Soldier soldier : gp.redBase.soldiers) {
             soldier.draw(g);
         }
