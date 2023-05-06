@@ -15,7 +15,7 @@ public abstract class Soldier {
     public boolean move = true;
     public boolean isHit = false;
 
-    public BufferedImage walk1, walk2;
+    public BufferedImage walk1, walk2, hit1, hit2;
     public int spriteCounter = 0;
     public int spriteNum = 1;
 
@@ -32,6 +32,8 @@ public abstract class Soldier {
         try {
             walk1 = ImageIO.read(new File("images/soldier/" + weapon + "/" + side + "walk1.png"));
             walk2 = ImageIO.read(new File("images/soldier/" + weapon + "/" + side + "walk2.png"));
+            hit1 = ImageIO.read(new File("images/soldier/" + weapon + "/" + side + "hit1.png"));
+            hit2 = ImageIO.read(new File("images/soldier/" + weapon + "/" + side + "hit2.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

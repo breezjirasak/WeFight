@@ -11,7 +11,7 @@ import frameworks.Soldier;
 public class SwordSoldier extends Soldier {
 
     public SwordSoldier(int x, int y, String side) {
-        super(100, 40, x, y, side);
+        super(100, 25, x, y, side);
 
         getImage("swordsolider");
     }
@@ -28,13 +28,12 @@ public class SwordSoldier extends Soldier {
 
         spriteCounter++;
         if (move) {
-
             if (isHit) {
                 isHit = false;
             }
 
             if (spriteCounter > 15) {
-                if (spriteNum == 1) {
+                if (spriteNum == 1 || spriteNum == 3 || spriteNum == 4) {
                     spriteNum = 2;
                 } else if (spriteNum == 2) {
                     spriteNum = 1;
@@ -44,9 +43,11 @@ public class SwordSoldier extends Soldier {
         }
         else {
             if (spriteCounter > 10) {
+                spriteNum = 3;
                 enemy.isHit = false;
             }
             if (spriteCounter > 30) {
+                spriteNum = 4;
                 enemy.isHit = true;
                 enemy.takeDamage(getDamage());
                 spriteCounter = 0;
@@ -64,6 +65,13 @@ public class SwordSoldier extends Soldier {
         }
         if (spriteNum == 2) {
             image = walk2;
+        }
+
+        if (spriteNum == 3) {
+            image = hit1;
+        }
+        if (spriteNum == 4) {
+            image = hit2;
         }
 
         double oneScale = (double) 50 / 100;

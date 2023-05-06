@@ -42,15 +42,6 @@ public class PlayingState implements State {
         if (code == KeyEvent.VK_I) {
             gp.greenBase.createSwordSoldier(900, 450);
         }
-
-        if (code == KeyEvent.VK_Z) {
-            gp.redBase.soldiers.remove(0);
-        }
-
-        if (code == KeyEvent.VK_U) {
-            gp.greenBase.soldiers.remove(0);
-        }
-
     }
 
     @Override
