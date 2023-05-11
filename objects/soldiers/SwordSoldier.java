@@ -7,6 +7,9 @@ import java.awt.AlphaComposite;
 import java.awt.image.BufferedImage;
 
 import frameworks.Soldier;
+import main.GamePanel;
+import objects.bases.BlueBase;
+import objects.bases.RedBase;
 
 public class SwordSoldier extends Soldier {
 
@@ -16,13 +19,33 @@ public class SwordSoldier extends Soldier {
         getImage("swordsolider");
     }
 
+    public void checkDistanceToHit(int enemyX) {
+        
+        if (side == "blue") {
+            if (positionX - 40 <= enemyX) {
+                move = false;
+            } else {
+                move = true;
+            }
+        }
+        
+        else if (side == "red") {
+            if (positionX + 40 >= enemyX) {
+                move = false;
+            } else {
+                move = true;
+            }
+
+        }
+    }
+
     @Override
-    public void update(Soldier enemy) {
+    public void update(Soldier enemy, String enemySide) {
         if (move) {
-            if (side == "green") {
-                positionX -= 1;
+            if (side == "blue") {
+                positionX -= 60/GamePanel.FPS;
             } else if (side == "red") {
-                positionX += 1;
+                positionX += 60/GamePanel.FPS;
             }
         }
 
@@ -32,7 +55,7 @@ public class SwordSoldier extends Soldier {
                 isHit = false;
             }
 
-            if (spriteCounter > 15) {
+            if (spriteCounter > GamePanel.FPS/4) {
                 if (spriteNum == 1 || spriteNum == 3 || spriteNum == 4) {
                     spriteNum = 2;
                 } else if (spriteNum == 2) {
@@ -42,14 +65,34 @@ public class SwordSoldier extends Soldier {
             }
         }
         else {
-            if (spriteCounter > 10) {
+            if (spriteCounter > GamePanel.FPS/6) {
                 spriteNum = 3;
-                enemy.isHit = false;
+                if (enemy == null) {
+                    if (enemySide == "red") {
+                        RedBase.isHit = false;
+                    }
+                    else if (enemySide == "blue") {
+                        BlueBase.isHit = false;
+                    }
+                }
+                else {enemy.isHit = false;}
             }
-            if (spriteCounter > 30) {
+            if (spriteCounter > GamePanel.FPS/2) {
                 spriteNum = 4;
-                enemy.isHit = true;
-                enemy.takeDamage(getDamage());
+                if (enemy == null) {
+                    if (enemySide == "red") {
+                        RedBase.isHit = true;
+                        RedBase.takeDamage(getDamage());
+                    }
+                    else if (enemySide == "blue") {
+                        BlueBase.isHit = true;
+                        BlueBase.takeDamage(getDamage());
+                    }
+                }
+                else {
+                    enemy.isHit = true;
+                    enemy.takeDamage(getDamage());
+                }
                 spriteCounter = 0;
             }
         }
@@ -74,7 +117,7 @@ public class SwordSoldier extends Soldier {
             image = hit2;
         }
 
-        double oneScale = (double) 50 / 100;
+        double oneScale = (double) 50 / maxHp;
         double hpBarValue = oneScale * getHp();
 
         if(isHit == true) {
@@ -87,10 +130,16 @@ public class SwordSoldier extends Soldier {
 
         g.setColor(new Color(35, 35, 35));
         g.fillRect(positionX + 32, positionY + 9, 52, 7);
-
+        
+        if (side == "blue") {
+            g.setColor(new Color(23, 97, 151));
+            g.fillRect(positionX + 33, positionY + 10, (int) hpBarValue, 5);
+        }
+        else if (side == "red") {
         g.setColor(new Color(255, 0, 30));
         g.fillRect(positionX + 33, positionY + 10, (int) hpBarValue, 5);
-
+        }
     }
+    
 
 }

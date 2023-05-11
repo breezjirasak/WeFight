@@ -13,10 +13,31 @@ public class GunSoldier extends Soldier {
         getImage("gunsolider");
     }
 
-    @Override
-    public void update(Soldier soldier) {
 
-        if (side == "green") {
+    public void checkDistanceToHit(int enemyX) {
+        
+        if (side == "blue") {
+            if (positionX - 150 <= enemyX) {
+                move = false;
+            } else {
+                move = true;
+            }
+        }
+        
+        else if (side == "red") {
+            if (positionX + 150 >= enemyX) {
+                move = false;
+            } else {
+                move = true;
+            }
+
+        }
+    }
+
+    @Override
+    public void update(Soldier enemy, String enemySide) {
+
+        if (side == "blue") {
             positionX -= 1;
         } else if (side == "red") {
             positionX += 1;

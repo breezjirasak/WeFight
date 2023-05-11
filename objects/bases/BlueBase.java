@@ -10,33 +10,33 @@ import javax.imageio.ImageIO;
 import frameworks.Base;
 import frameworks.Soldier;
 import main.GamePanel;
-import factory.RedSoldierFactory;
+import factory.BlueSoldierFactory;
 
-public class RedBase extends Base {
+public class BlueBase extends Base {
 
     public int maxHp;
     public static int HP = 1000;
 
     public static Soldier firstSoldier;
-    public static int positionOfFirstObject = 0;
+    public static int positionOfFirstObject = 1100;
     private int countTime;
 
-    public RedBase(int x, int y) {
-        super(x, y, new RedSoldierFactory());
+
+    public BlueBase(int x, int y) {
+        super(x, y, new BlueSoldierFactory());
 
         this.maxHp = HP;
+
         getImage();
     }
 
-
     public void getImage() {
         try {
-            base = ImageIO.read(new File("images/base/redbase/base.png"));
+            base = ImageIO.read(new File("images/base/bluebase/base.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
     public static void takeDamage(int damage) {
         HP -= damage;
@@ -45,12 +45,13 @@ public class RedBase extends Base {
     @Override
     public void update() {
 
-        // increase money ... per second
+        // increase money level per second
         countTime++;
         if (countTime >= GamePanel.FPS) {
             setMoney(getLevel());
             countTime = 0;
         }
+
 
         // update soldier
         if (!soldiers.isEmpty()) {
@@ -58,13 +59,15 @@ public class RedBase extends Base {
             // The position of first soldier
             positionOfFirstObject = firstSoldier.positionX;
             for (Soldier soldier : soldiers) {
-                soldier.update(BlueBase.firstSoldier, "blue");
+                soldier.update(RedBase.firstSoldier, "red");
                 // check distance with enemy's position
-                soldier.checkDistanceToHit(BlueBase.positionOfFirstObject);
+                soldier.checkDistanceToHit(RedBase.positionOfFirstObject);
 
-                // it will check the base position to hit the base
+                // it will check the base position to hit the base ...
+                // if enemybase.firstobject == ....
+                // then hit solder.update(base)
+
             }
-
             // when soldier is dead then remove it
             if (firstSoldier.getHp() <= 0) {
                 soldiers.remove(0);
@@ -72,18 +75,19 @@ public class RedBase extends Base {
         } else {
             // if there is no soldier it will be the position of base
             firstSoldier = null;
-            positionOfFirstObject = 200;
+            positionOfFirstObject = 1080;
         }
 
     }
 
     @Override
     public void draw(Graphics g) {
+
         g.setFont(g.getFont().deriveFont(Font.BOLD, 50F));
         String text = "$ " + String.valueOf(getMoney());
 
         g.setColor(Color.black);
-        g.drawString(text, positionX + 20, 100);
+        g.drawString(text, positionX + 108, 100);
 
         g.drawImage(base, positionX, positionY, 480, 480, null);
 
@@ -91,13 +95,16 @@ public class RedBase extends Base {
             soldier.draw(g);
         }
 
+
+
         double oneScale = (double) 350 / maxHp;
         double hpBarValue = oneScale * HP;
 
         g.setColor(new Color(35, 35, 35));
-        g.fillRect(positionX + 20, 20, 352, 22);
+        g.fillRect(positionX + 108, 20, 352, 22);
         
-        g.setColor(new Color(255, 0, 30));
-        g.fillRect(positionX + 20, 20, (int) hpBarValue, 20);
+        g.setColor(new Color(23, 97, 151));
+        g.fillRect(positionX + 108, 20, (int) hpBarValue, 20);
+
     }
 }

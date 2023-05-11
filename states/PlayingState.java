@@ -3,9 +3,13 @@ package states;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.security.Key;
+import java.awt.Image;
 
 import frameworks.State;
 import main.GamePanel;
+import objects.bases.BlueBase;
+import objects.bases.RedBase;
 
 
 public class PlayingState implements State {
@@ -14,15 +18,13 @@ public class PlayingState implements State {
 
     public PlayingState(GamePanel gp) {
         this.gp = gp;
+
     }
 
     @Override
     public void draw(Graphics g) {
-
-        gp.setBackground(Color.white);
-
         gp.redBase.draw(g);
-        gp.greenBase.draw(g);
+        gp.blueBase.draw(g);
 
     }
 
@@ -35,19 +37,58 @@ public class PlayingState implements State {
             gp.gameState = gp.PAUSED;
         }
 
-        if (code == KeyEvent.VK_X) {
-            gp.redBase.createSwordSoldier(200, 450);
-        }
+        // Red control
+        if (code == KeyEvent.VK_Z) {
+            // upgrade base
+            gp.redBase.upgradeBase();
 
+        }
+        if (code == KeyEvent.VK_X) {
+            // create sword soldier
+            gp.redBase.createSwordSoldier(200, 500);
+        }
+        if (code == KeyEvent.VK_C) {
+            // create gun soldier
+            
+        }
+        if (code == KeyEvent.VK_V) {
+            // ultimate
+            
+        }
+        
+
+
+        // Blue control
+        if (code == KeyEvent.VK_U) {
+            // upgrade base
+            gp.blueBase.upgradeBase();
+            
+        }
         if (code == KeyEvent.VK_I) {
-            gp.greenBase.createSwordSoldier(900, 450);
+            // create sword soldier
+            gp.blueBase.createSwordSoldier(1080, 500);
+        }
+        if (code == KeyEvent.VK_O) {
+            // create gun soldier
+            
+        }
+        if (code == KeyEvent.VK_P) {
+            // ultimate
+            
         }
     }
 
     @Override
     public void update() {
-        gp.redBase.update(gp.greenBase.frontX, gp.greenBase.soldierFront);
-        gp.greenBase.update(gp.redBase.frontX, gp.redBase.soldierFront);
+        if (RedBase.HP <= 0 && RedBase.HP < BlueBase.HP) {
+            gp.gameState = gp.END;
+        }
+
+        else if (BlueBase.HP <= 0 && BlueBase.HP < RedBase.HP) {
+            gp.gameState = gp.END;
+        }
+        gp.redBase.update();
+        gp.blueBase.update();
     }
 
 }

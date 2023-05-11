@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 
 public abstract class Soldier {
     private int hp;
+    public int maxHp;
     private int damage;
     public String side;
     public int positionX;
@@ -19,8 +20,9 @@ public abstract class Soldier {
     public int spriteCounter = 0;
     public int spriteNum = 1;
 
-    public Soldier(int hp, int damage, int x, int y, String side) {
+    public Soldier(int hp,int damage, int x, int y, String side) {
         this.hp = hp;
+        this.maxHp = hp;
         this.damage = damage;
         this.positionX = x;
         this.positionY = y;
@@ -51,7 +53,9 @@ public abstract class Soldier {
         return damage;
     }
 
-    public abstract void update(Soldier soldier);
+    public abstract void checkDistanceToHit(int enemyX);
+
+    public abstract void update(Soldier enemy, String enemySide);
 
     public abstract void draw(Graphics g);
 }

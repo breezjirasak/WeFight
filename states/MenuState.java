@@ -19,10 +19,9 @@ public class MenuState implements State {
 
     @Override
     public void draw(Graphics g) {
-        gp.setBackground(Color.black);
 
         g.setFont(g.getFont().deriveFont(Font.BOLD, 96F));
-        String text = "We Fight";
+        String text = "WE FIGHT";
         int x = gp.getXforCenteredText(text, g);
         int y = 150;
 
