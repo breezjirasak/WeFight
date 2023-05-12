@@ -1,47 +1,46 @@
 # We Fight! Game Project
 
-## Introduction
+## Project Overview
 
-We Fight! is a Java-based game that requires two players to battle against each other in a strategy game. The game is designed to enhance the player's skills in strategy and problem-solving while having fun.
+Welcome to We Fight! - an engaging and strategy-based tank battle game developed in Java. In this game, two players compete against each other, aiming to destroy the opponent's tank. The gameplay involves collecting coins, upgrading tanks, spawning soldiers of different types, and using a special attack known as the "Ultimate". The graphical user interface (GUI) for We Fight! is implemented using Java Swing.
 
 ## Getting Started
 
-To play We Fight!, you need to have the Java Development Kit (JDK) installed on your computer. Once you have installed the JDK, you can download the game's source code and compile it using the command prompt.
+To join the exciting world of We Fight!, you first need to install the Java Development Kit (JDK) on your computer. Once you have the JDK installed, you can download the game's source code and compile it using the command line.
 
-## How to Play
+## Game Features and How to Play
 
-### Player Selection
+### 1. Upgrade Your Base Tank
 
-The game begins by selecting the number of players that will be participating. You can choose either 1 or 2 players.
+In the game, your tank represents your progress. Upgrading your tank allows you to collect coins faster, giving you an edge over your opponent. To upgrade your tank, press 'X' if you're the green player and 'I' if you're the red player.
 
-### Money Increase
+### 2. Spawn Soldiers
 
-The game starts with each player earning one point of money per second. This money can be used to buy upgrades and weapons to help you win the game.
+You have the option to spawn two types of soldiers to help fight your battles:
 
-### Base and Soldier Health
+- **Sword Soldier:** This soldier can be spawned by pressing 'C' for the green player and 'O' for the red player.
+- **Armed Soldier:** This soldier can be spawned by pressing 'V' for the green player and 'P' for the red player.
 
-Each player has a base that has its health points (hp). The base's health points determine how much damage it can take before it gets destroyed. Similarly, each player has soldiers with their health points. The health points determine how much damage they can take before they are destroyed.
+The cost in coins for spawning each type of soldier will be displayed on the screen.
 
-### Base Development
+### 3. Unleash the Ultimate
 
-The player can upgrade the base to increase their money per second.
+The "Ultimate" is a powerful weapon that can significantly damage the opponent's tank. It can be activated by pressing 'Z' for the green player and 'U' for the red player.
 
-### Build Army to Fight
+### 4. Engage in Player-vs-Player (PvP) Mode
 
-The player can build an army to fight by choosing either a sword or a gun. The sword is more effective against soldiers, while the gun is more effective against the base.
+We Fight! provides a PvP mode where you compete against another player in real-time. The aim is to strategically collect coins, upgrade your tank, spawn soldiers, and use your Ultimate to attack the opponent's tank and defend your own. The game concludes when one player's tank is destroyed.
 
-### Powershot
+## Design Patterns Implemented
 
-The Powershot is the ultimate weapon in the game. The Powershot can destroy the enemy's soldiers.
+We Fight! incorporates several design patterns to ensure efficient performance and scalability:
 
-### Destroy Opposite Base to Win
+1. **State Pattern:** This pattern is used to represent different states of the game, such as Menu, Playing, Pausing, and Result, making the game adaptable to varying situations.
 
-The game is won by destroying the opponent's base. The game is lost when the player's base is destroyed.
+2. **Factory Pattern:** This pattern is used for the creation of Sword Soldier and Armed Soldier objects without having to specify their exact classes. A SoldierFactory class with a createSoldier() method spawns a soldier as per the player's choice.
 
-### Two Players Control the Keyboard
-
-Both players use the same keyboard to play the game. The player on the left uses the A, W, S, and D keys to move around, while the player on the right uses the arrow keys.
+3. **Flyweight Pattern:** This pattern is used to optimize memory usage by sharing intrinsic properties, like movement speed and attack range, between Soldier objects. The SoldierFactory maintains a cache of previously created Soldier objects and reuses them whenever possible.
 
 ## Conclusion
-We Fight! is a fun and exciting game that challenges players to use their strategic skills to win the game. The game is easy to understand and play, making it suitable for all ages. The game's source code is available for download, allowing players to customize the game to their liking.
 
+We Fight! offers a fun and strategic gameplay experience that is easy to understand and play, making it suitable for players of all ages. With the game's source code available for download, players can customize the game to their liking. Join us in this thrilling tank battle and enhance your strategic skills while having fun!
