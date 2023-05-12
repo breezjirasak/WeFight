@@ -10,7 +10,7 @@ To join the exciting world of We Fight!, you first need to install the Java Deve
 
 ## Game Features and How to Play
 
-### 1. Upgrade Your Base Tank
+### 1. Upgrade Your Base KingDom
 
 In the game, your tank represents your progress. Upgrading your tank allows you to collect coins faster, giving you an edge over your opponent. To upgrade your tank, press 'X' if you're the green player and 'I' if you're the red player.
 
