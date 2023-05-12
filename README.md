@@ -2,11 +2,24 @@
 
 ## Project Overview
 
-Welcome to We Fight! - an engaging and strategy-based battle game developed in Java. In this game, two players compete against each other, aiming to destroy the opponent's base. The gameplay involves collecting money, upgrading tanks, spawning soldiers of different types, and using a special attack known as the "Ultimate". The graphical user interface (GUI) for We Fight! is implemented using Java Swing.
+Welcome to We Fight! - an engaging and strategy-based battle game developed in Java. In this game, two players compete against each other, aiming to destroy the opponent's base. The gameplay involves collecting money, upgrading base, spawning soldiers of different types, and using a special attack known as the "Ultimate". The graphical user interface (GUI) for We Fight! is implemented using Java Swing.
 
 ## Getting Started
 
 To join the exciting world of We Fight!, you first need to install the Java Development Kit (JDK) on your computer. Once you have the JDK installed, you can download the game's source code and compile it using the command line by type.
+
+First type in the terminal
+```
+javac Main.java
+```
+
+Then,
+
+```
+java Main
+```
+
+Now, you are at the main menu of the game then, use up and down to select the choice and enter it to start the game.
 
 
 ## Game Features and How to Play
@@ -57,3 +70,12 @@ We Fight! incorporates several design patterns to ensure efficient performance a
 ## Conclusion
 
 We Fight! offers a fun and strategic gameplay experience that is easy to understand and play, making it suitable for players of all ages. With the game's source code available for download, players can customize the game to their liking. Join us in this thrilling tank battle and enhance your strategic skills while having fun!
+
+
+## Team
+
+```
+Jirasak Tumbal 6410546114
+Warat Poovorakit 6410545771
+Setthanan Thongpanchang 6410546319
+```
