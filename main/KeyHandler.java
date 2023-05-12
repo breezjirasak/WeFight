@@ -3,11 +3,9 @@ package main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyHandler implements KeyListener{
+public class KeyHandler implements KeyListener {
 
     private GamePanel gp = new GamePanel();
-
-    
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
@@ -27,5 +25,5 @@ public class KeyHandler implements KeyListener{
     public void keyReleased(KeyEvent e) {
 
     }
-    
+
 }

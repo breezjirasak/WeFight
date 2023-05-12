@@ -16,7 +16,6 @@ public class PausedState implements State {
 
     private GamePanel gp;
     private int commandNum = 1;
-    
 
     public PausedState(GamePanel gp) {
         this.gp = gp;
@@ -26,13 +25,17 @@ public class PausedState implements State {
         RedBase.HP = gp.redBase.maxHp;
         gp.redBase.money = 0;
         gp.redBase.level = 1;
-        gp.redBase.soldiers = new ArrayList<Soldier>();
+        gp.redBase.soldiersSword = new ArrayList<Soldier>();
+        gp.redBase.soldiersGun = new ArrayList<Soldier>();
+        gp.redBase.ultimate = true;
 
         BlueBase.HP = gp.redBase.maxHp;
         gp.blueBase.money = 0;
         gp.blueBase.level = 1;
-        gp.blueBase.soldiers = new ArrayList<Soldier>();
-        
+        gp.blueBase.soldiersSword = new ArrayList<Soldier>();
+        gp.blueBase.soldiersGun = new ArrayList<Soldier>();
+        gp.blueBase.ultimate = true;
+
     }
 
     @Override
@@ -52,30 +55,61 @@ public class PausedState implements State {
         g.setColor(Color.white);
         g.drawString(text, x, y);
 
-
         g.setFont(g.getFont().deriveFont(Font.BOLD, 40F));
+
+        text = "RESUME";
+        x = gp.getXforCenteredText(text, g);
+        y += 100;
+        g.setColor(Color.black);
+        g.drawString(text, x + 2, y + 2);
+        g.setColor(Color.white);
+        g.drawString(text, x, y);
+        if (commandNum == 1) {
+            g.setColor(Color.black);
+            g.drawString(">", x - 40 + 2, y + 2);
+            g.setColor(Color.white);
+            g.drawString(">", x - 40, y);
+        }
 
         text = "RESTART";
         x = gp.getXforCenteredText(text, g);
-        y += 100;
+        y += 50;
+        g.setColor(Color.black);
+        g.drawString(text, x + 2, y + 2);
+        g.setColor(Color.white);
         g.drawString(text, x, y);
-        if (commandNum == 1) {
+        if (commandNum == 2) {
+            g.setColor(Color.black);
+            g.drawString(">", x - 40 + 2, y + 2);
+            g.setColor(Color.white);
             g.drawString(">", x - 40, y);
         }
 
         text = "MENU";
         x = gp.getXforCenteredText(text, g);
         y += 50;
+        g.setColor(Color.black);
+        g.drawString(text, x + 2, y + 2);
+        g.setColor(Color.white);
         g.drawString(text, x, y);
-        if (commandNum == 2) {
+        if (commandNum == 3) {
+            g.setColor(Color.black);
+            g.drawString(">", x - 40 + 2, y + 2);
+            g.setColor(Color.white);
             g.drawString(">", x - 40, y);
         }
 
         text = "QUIT";
         x = gp.getXforCenteredText(text, g);
         y += 50;
+        g.setColor(Color.black);
+        g.drawString(text, x + 2, y + 2);
+        g.setColor(Color.white);
         g.drawString(text, x, y);
-        if (commandNum == 3) {
+        if (commandNum == 4) {
+            g.setColor(Color.black);
+            g.drawString(">", x - 40 + 2, y + 2);
+            g.setColor(Color.white);
             g.drawString(">", x - 40, y);
         }
 
@@ -97,6 +131,10 @@ public class PausedState implements State {
             else if (commandNum == 3) {
                 commandNum = 2;
             }
+
+            else if (commandNum == 4) {
+                commandNum = 3;
+            }
         }
 
         if (code == KeyEvent.VK_DOWN) {
@@ -107,20 +145,28 @@ public class PausedState implements State {
             else if (commandNum == 2) {
                 commandNum = 3;
             }
+
+            else if (commandNum == 3) {
+                commandNum = 4;
+            }
         }
 
         if (code == KeyEvent.VK_ENTER) {
             if (commandNum == 1) {
+                gp.gameState = gp.PLAYING;
+            }
+
+            if (commandNum == 2) {
                 resetGame();
                 gp.gameState = gp.PLAYING;
             }
 
-            else if (commandNum == 2) {
+            else if (commandNum == 3) {
                 resetGame();
                 gp.gameState = gp.MENU;
             }
 
-            else if (commandNum == 3) {
+            else if (commandNum == 4) {
                 System.exit(0);
             }
         }
@@ -132,5 +178,4 @@ public class PausedState implements State {
 
     }
 
-    
 }

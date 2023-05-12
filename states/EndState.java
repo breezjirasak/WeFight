@@ -12,15 +12,13 @@ import objects.bases.BlueBase;
 import objects.bases.RedBase;
 import frameworks.Soldier;
 
-
-public class EndState implements State{
+public class EndState implements State {
 
     private GamePanel gp;
 
     private int commandNum = 1;
 
     String text;
-    
 
     public EndState(GamePanel gp) {
         this.gp = gp;
@@ -30,15 +28,18 @@ public class EndState implements State{
         RedBase.HP = gp.redBase.maxHp;
         gp.redBase.money = 0;
         gp.redBase.level = 1;
-        gp.redBase.soldiers = new ArrayList<Soldier>();
+        gp.redBase.soldiersSword = new ArrayList<Soldier>();
+        gp.redBase.soldiersGun = new ArrayList<Soldier>();
+        gp.redBase.ultimate = true;
 
         BlueBase.HP = gp.redBase.maxHp;
         gp.blueBase.money = 0;
         gp.blueBase.level = 1;
-        gp.blueBase.soldiers = new ArrayList<Soldier>();
-        
+        gp.blueBase.soldiersSword = new ArrayList<Soldier>();
+        gp.blueBase.soldiersGun = new ArrayList<Soldier>();
+        gp.blueBase.ultimate = true;
+
     }
-    
 
     @Override
     public void draw(Graphics g) {
@@ -66,34 +67,50 @@ public class EndState implements State{
         g.setColor(Color.white);
         g.drawString(text, x, y);
 
-
-        g.setColor(Color.black);
         g.setFont(g.getFont().deriveFont(Font.BOLD, 40F));
 
         text = "RESTART";
         x = gp.getXforCenteredText(text, g);
         y += 100;
+        g.setColor(Color.black);
+        g.drawString(text, x + 2, y + 2);
+        g.setColor(Color.white);
         g.drawString(text, x, y);
         if (commandNum == 1) {
+            g.setColor(Color.black);
+            g.drawString(">", x - 40 + 2, y + 2);
+            g.setColor(Color.white);
             g.drawString(">", x - 40, y);
         }
 
         text = "MENU";
         x = gp.getXforCenteredText(text, g);
         y += 50;
+        g.setColor(Color.black);
+        g.drawString(text, x + 2, y + 2);
+        g.setColor(Color.white);
         g.drawString(text, x, y);
         if (commandNum == 2) {
+            g.setColor(Color.black);
+            g.drawString(">", x - 40 + 2, y + 2);
+            g.setColor(Color.white);
             g.drawString(">", x - 40, y);
         }
 
         text = "QUIT";
         x = gp.getXforCenteredText(text, g);
         y += 50;
+        g.setColor(Color.black);
+        g.drawString(text, x + 2, y + 2);
+        g.setColor(Color.white);
         g.drawString(text, x, y);
         if (commandNum == 3) {
+            g.setColor(Color.black);
+            g.drawString(">", x - 40 + 2, y + 2);
+            g.setColor(Color.white);
             g.drawString(">", x - 40, y);
         }
-        
+
     }
 
     @Override
@@ -136,13 +153,12 @@ public class EndState implements State{
                 System.exit(0);
             }
         }
-        
-    }
 
+    }
 
     @Override
     public void update() {
 
     }
-    
+
 }

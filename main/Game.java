@@ -12,6 +12,7 @@ public class Game extends JFrame {
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
+        setResizable(false);
 
         gamePanel.startGameThread();
     }

@@ -9,9 +9,9 @@ public class BlueSoldierFactory extends SoldierFactory {
     @Override
     public Soldier BuildASoldier(String weapon, int x, int y) {
         if (weapon == "Sword") {
-            return new SwordSoldier(x,y, "blue");
+            return new SwordSoldier(x, y, "blue");
         } else if (weapon == "Gun") {
-            return new GunSoldier(x,y, "blue");
+            return new GunSoldier(x, y, "blue");
         } else {
             return null;
         }

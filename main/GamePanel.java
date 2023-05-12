@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 import frameworks.State;
 import objects.bases.BlueBase;
@@ -20,7 +20,7 @@ public class GamePanel extends JPanel {
     public int HEIGHT = 700;
     public static int FPS = 60; // can be 0 - 60
 
-    private Image backGround;
+    private BufferedImage backGround, red, blue;
 
     public State gameState;
     public MenuState MENU = new MenuState(this);
@@ -40,12 +40,10 @@ public class GamePanel extends JPanel {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBackground(Color.BLACK);
 
-        // if (FPS > 60 || FPS < 0) {
-        //     throw new IllegalArgumentException("Value of FPS can be in range of 0 - 60 FPS");
-        // }
-
         try {
-            this.backGround = ImageIO.read(new File("images/background.png"));
+            backGround = ImageIO.read(new File("images/background.png"));
+            blue = ImageIO.read(new File("images/base/bluebase/base.png"));
+            red = ImageIO.read(new File("images/base/redbase/base.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -58,8 +56,8 @@ public class GamePanel extends JPanel {
             public void run() {
 
                 while (gameThread != null) {
-                    update();
                     repaint();
+                    update();
                     try {
                         Thread.sleep(1000 / FPS);
                     } catch (InterruptedException e) {
@@ -80,6 +78,8 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(backGround, 0, 0, WIDTH, HEIGHT, null);
+        g.drawImage(red, 0, 200, 480, 480, null);
+        g.drawImage(blue, 920, 200, 480, 480, null);
 
         gameState.draw(g);
     }

@@ -1,16 +1,12 @@
 package states;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
-import java.security.Key;
-import java.awt.Image;
 
 import frameworks.State;
 import main.GamePanel;
 import objects.bases.BlueBase;
 import objects.bases.RedBase;
-
 
 public class PlayingState implements State {
 
@@ -49,20 +45,19 @@ public class PlayingState implements State {
         }
         if (code == KeyEvent.VK_C) {
             // create gun soldier
-            
+            gp.redBase.createGunSoldier(200, 500);
         }
         if (code == KeyEvent.VK_V) {
             // ultimate
-            
-        }
-        
+            gp.redBase.ultimate(100, 600);
+            gp.redBase.ultimate = false;
 
+        }
 
         // Blue control
         if (code == KeyEvent.VK_U) {
             // upgrade base
             gp.blueBase.upgradeBase();
-            
         }
         if (code == KeyEvent.VK_I) {
             // create sword soldier
@@ -70,11 +65,12 @@ public class PlayingState implements State {
         }
         if (code == KeyEvent.VK_O) {
             // create gun soldier
-            
+            gp.blueBase.createGunSoldier(1080, 500);
         }
         if (code == KeyEvent.VK_P) {
             // ultimate
-            
+            gp.blueBase.ultimate(1180, 600);
+            gp.blueBase.ultimate = false;
         }
     }
 

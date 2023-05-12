@@ -20,7 +20,7 @@ public abstract class Soldier {
     public int spriteCounter = 0;
     public int spriteNum = 1;
 
-    public Soldier(int hp,int damage, int x, int y, String side) {
+    public Soldier(int hp, int damage, int x, int y, String side) {
         this.hp = hp;
         this.maxHp = hp;
         this.damage = damage;
@@ -47,6 +47,10 @@ public abstract class Soldier {
 
     public int getHp() {
         return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 
     public int getDamage() {

@@ -16,11 +16,11 @@ public class SwordSoldier extends Soldier {
     public SwordSoldier(int x, int y, String side) {
         super(100, 25, x, y, side);
 
-        getImage("swordsolider");
+        getImage("swordsoldier");
     }
 
     public void checkDistanceToHit(int enemyX) {
-        
+
         if (side == "blue") {
             if (positionX - 40 <= enemyX) {
                 move = false;
@@ -28,7 +28,7 @@ public class SwordSoldier extends Soldier {
                 move = true;
             }
         }
-        
+
         else if (side == "red") {
             if (positionX + 40 >= enemyX) {
                 move = false;
@@ -43,9 +43,9 @@ public class SwordSoldier extends Soldier {
     public void update(Soldier enemy, String enemySide) {
         if (move) {
             if (side == "blue") {
-                positionX -= 60/GamePanel.FPS;
+                positionX -= 60 / GamePanel.FPS;
             } else if (side == "red") {
-                positionX += 60/GamePanel.FPS;
+                positionX += 60 / GamePanel.FPS;
             }
         }
 
@@ -55,7 +55,7 @@ public class SwordSoldier extends Soldier {
                 isHit = false;
             }
 
-            if (spriteCounter > GamePanel.FPS/4) {
+            if (spriteCounter > GamePanel.FPS / 4) {
                 if (spriteNum == 1 || spriteNum == 3 || spriteNum == 4) {
                     spriteNum = 2;
                 } else if (spriteNum == 2) {
@@ -63,33 +63,30 @@ public class SwordSoldier extends Soldier {
                 }
                 spriteCounter = 0;
             }
-        }
-        else {
-            if (spriteCounter > GamePanel.FPS/6) {
+        } else {
+            if (spriteCounter > GamePanel.FPS / 6) {
                 spriteNum = 3;
                 if (enemy == null) {
                     if (enemySide == "red") {
                         RedBase.isHit = false;
-                    }
-                    else if (enemySide == "blue") {
+                    } else if (enemySide == "blue") {
                         BlueBase.isHit = false;
                     }
+                } else {
+                    enemy.isHit = false;
                 }
-                else {enemy.isHit = false;}
             }
-            if (spriteCounter > GamePanel.FPS/2) {
+            if (spriteCounter > GamePanel.FPS / 2) {
                 spriteNum = 4;
                 if (enemy == null) {
                     if (enemySide == "red") {
                         RedBase.isHit = true;
                         RedBase.takeDamage(getDamage());
-                    }
-                    else if (enemySide == "blue") {
+                    } else if (enemySide == "blue") {
                         BlueBase.isHit = true;
                         BlueBase.takeDamage(getDamage());
                     }
-                }
-                else {
+                } else {
                     enemy.isHit = true;
                     enemy.takeDamage(getDamage());
                 }
@@ -100,7 +97,7 @@ public class SwordSoldier extends Soldier {
 
     @Override
     public void draw(Graphics g) {
-        Graphics2D g2 = (Graphics2D)g;
+        Graphics2D g2 = (Graphics2D) g;
         BufferedImage image = null;
 
         if (spriteNum == 1) {
@@ -120,7 +117,7 @@ public class SwordSoldier extends Soldier {
         double oneScale = (double) 50 / maxHp;
         double hpBarValue = oneScale * getHp();
 
-        if(isHit == true) {
+        if (isHit == true) {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
         }
 
@@ -128,18 +125,18 @@ public class SwordSoldier extends Soldier {
 
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
-        g.setColor(new Color(35, 35, 35));
-        g.fillRect(positionX + 32, positionY + 9, 52, 7);
-        
+
         if (side == "blue") {
+            g.setColor(new Color(35, 35, 35));
+            g.fillRect(positionX + 39, positionY + 9, 52, 7);
             g.setColor(new Color(23, 97, 151));
+            g.fillRect(positionX + 40, positionY + 10, (int) hpBarValue, 5);
+        } else if (side == "red") {
+            g.setColor(new Color(35, 35, 35));
+            g.fillRect(positionX + 32, positionY + 9, 52, 7);
+            g.setColor(new Color(255, 0, 30));
             g.fillRect(positionX + 33, positionY + 10, (int) hpBarValue, 5);
         }
-        else if (side == "red") {
-        g.setColor(new Color(255, 0, 30));
-        g.fillRect(positionX + 33, positionY + 10, (int) hpBarValue, 5);
-        }
     }
-    
 
 }

@@ -23,9 +23,9 @@ public class MenuState implements State {
         g.setFont(g.getFont().deriveFont(Font.BOLD, 96F));
         String text = "WE FIGHT";
         int x = gp.getXforCenteredText(text, g);
-        int y = 150;
+        int y = 200;
 
-        g.setColor(Color.gray);
+        g.setColor(Color.black);
         g.drawString(text, x + 5, y + 5);
 
         g.setColor(Color.white);
@@ -35,17 +35,29 @@ public class MenuState implements State {
 
         text = "START GAME";
         x = gp.getXforCenteredText(text, g);
-        y += 300;
+        y += 200;
+        g.setColor(Color.black);
+        g.drawString(text, x + 2, y + 2);
+        g.setColor(Color.white);
         g.drawString(text, x, y);
         if (commandNum == 1) {
+            g.setColor(Color.black);
+            g.drawString(">", x - 40 + 2, y + 2);
+            g.setColor(Color.white);
             g.drawString(">", x - 40, y);
         }
 
         text = "QUIT";
         x = gp.getXforCenteredText(text, g);
         y += 50;
+        g.setColor(Color.black);
+        g.drawString(text, x + 2, y + 2);
+        g.setColor(Color.white);
         g.drawString(text, x, y);
         if (commandNum == 2) {
+            g.setColor(Color.black);
+            g.drawString(">", x - 40 + 2, y + 2);
+            g.setColor(Color.white);
             g.drawString(">", x - 40, y);
         }
 
