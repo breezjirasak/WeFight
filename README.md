@@ -1,4 +1,7 @@
 # We Fight! Game Project
+![pic1](./images/1.png)
+![pic2](./images/2.png)
+![pic3](./images/3.png)
 
 ## Project Overview
 
